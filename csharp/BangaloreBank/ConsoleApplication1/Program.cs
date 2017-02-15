@@ -20,21 +20,21 @@ namespace BangaloreBank
             //String to integer array
             for (int i = 0; i < bankAccountNumber.Length; i++)
             {
-                digits[i] = int.Parse(bankAccountNumber.ElementAt(i)+"");
-                if(digits[i] == 0)
+                digits[i] = int.Parse(bankAccountNumber.ElementAt(i) + "");
+                if (digits[i] == 0)
                 {
                     digits[i] = 10;
                 }
             }
 
-            int leftIndex = digits[1];
-            int rightIndex = digits[0];
+            int leftIndex = digits.Min();
+            int rightIndex = digits.Max();
 
-           
+
 
             int currentDigit, timeTaken = 0, closeKey;
 
-            for(int i = 0; i < digits.Length; i++)
+            for (int i = 0; i < digits.Length; i++)
             {
                 currentDigit = digits[i];
 
@@ -53,7 +53,7 @@ namespace BangaloreBank
 
 
             Console.Read();
-            
+
 
         }
 
