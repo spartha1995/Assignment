@@ -1,0 +1,6 @@
+C:\Users\partha\Desktop\c#\sherlockvalidstring\sherlockvalidstring\bin\Debug\sherlockvalidstring.exe.config
+C:\Users\partha\Desktop\c#\sherlockvalidstring\sherlockvalidstring\bin\Debug\sherlockvalidstring.exe
+C:\Users\partha\Desktop\c#\sherlockvalidstring\sherlockvalidstring\bin\Debug\sherlockvalidstring.pdb
+C:\Users\partha\Desktop\c#\sherlockvalidstring\sherlockvalidstring\obj\Debug\sherlockvalidstring.csprojResolveAssemblyReference.cache
+C:\Users\partha\Desktop\c#\sherlockvalidstring\sherlockvalidstring\obj\Debug\sherlockvalidstring.exe
+C:\Users\partha\Desktop\c#\sherlockvalidstring\sherlockvalidstring\obj\Debug\sherlockvalidstring.pdb
