@@ -14,7 +14,7 @@ namespace InventoryUnitTesting
         private int Quantity;
 
         /// <summary>
-        /// Adding product in inventory
+        /// Adding product in inventory Pass Case
         /// </summary>
 
         [Fact]
@@ -26,6 +26,26 @@ namespace InventoryUnitTesting
                 Id = 6,
                 ProductId = 5,
                 Quantity = 5,
+
+            };
+
+            var prgm = new Program();
+            var list = prgm.AddInventory(inventory);
+            Assert.Equal(list.Count, db.InventoryList.Count);
+        }
+        /// <summary>
+        /// Adding product in inventory Failed Case
+        /// </summary>
+
+        [Fact]
+        public void WhenAddingProductToInventory_InventoryListShouldbeIncreasedFailedCase()
+        {
+            var db = new Database();
+            var inventory = new Inventory()
+            {
+                Id = 10,
+                ProductId = 15,
+                Quantity = 10,
 
             };
 
@@ -55,6 +75,28 @@ namespace InventoryUnitTesting
             Assert.Equal(40, db.InventoryList.Count);
         }
 
+
+        /// <summary>
+        /// Deleting Product From Inventory Failed case
+        /// </summary>
+
+        [Fact]
+        public void DeletingProductFromInventoryFailedCase()
+        {
+            var db = new Database();
+            var inventory = new Inventory()
+            {
+                Id = 11,
+                ProductId = 7,
+                Quantity = 22,
+
+            };
+
+            var prgm = new Program();
+            var list = prgm.DeleteInventory(inventory);
+            Assert.Equal(40, db.InventoryList.Count);
+        }
+
         /// <summary>
         /// Updating a Product
         /// </summary>
@@ -74,6 +116,26 @@ namespace InventoryUnitTesting
             var list = prgm.UpdateInventory(inventory);
             Assert.Equal(200, db.InventoryList.Count);
         }
+
+        /// <summary>
+        /// Updating a Product Failed Case
+        /// </summary>
+        [Fact]
+        public void UpdatingAProductFromInventoryFailedCase()
+        {
+            var db = new Database();
+            var inventory = new Inventory()
+            {
+                Id = 1,
+                ProductId = 1,
+                Quantity = 60,
+
+            };
+
+            var prgm = new Program();
+            var list = prgm.UpdateInventory(inventory);
+            Assert.Equal(100, db.InventoryList.Count);
+        }
         /// <summary>
         /// Checking a Product Is In Inventory Or Not
         /// </summary>
@@ -91,7 +153,7 @@ namespace InventoryUnitTesting
             Assert.Same(assumption, db.InventoryList.Contains(inventory));
         }
         /// <summary>
-        /// Checking a Product Is In Inventory Or Not
+        /// Checking a Product Is In Inventory Or Not wrong Assumption
         /// </summary>
         [Fact]
           public void WhencheckProductExistOrNotWrongAssumption()
@@ -102,9 +164,9 @@ namespace InventoryUnitTesting
           ProductId = 9,
     };
         var prgm = new Program();
-     var assumption = "No";
+     var wrongassumption = "No";
         var list = prgm.CheckProductIsExistInInventoryOrNot();
-        Assert.Same(assumption, db.InventoryList.Contains(inventory));
+        Assert.Same(wrongassumption, db.InventoryList.Contains(inventory));
         }
 
 
@@ -135,6 +197,35 @@ namespace InventoryUnitTesting
             };
             var list2 = prgm.UpdateInventory(inventoryupdate);
             var assumption = "Yes";
+            Assert.Same(assumption, db.InventoryList.Contains(inventoryupdate));
+        }
+
+        /// <summary>
+        /// Checking out Cart will upgrade as per Requirment Failed Case
+        /// </summary>
+
+        [Fact]
+        public void WhenCheckOutFromCart_InventoryWillUpdateWrongAssumption()
+        {
+            var db = new Database();
+            var cart = new Cart()
+            {
+                Id = 2,
+                ProductId = 2,
+                OrderedQuantity = 10
+            };
+            var prgm = new Program();
+            var list = prgm.CheckOutTheCartandUpdateInventory();
+            Assert.Equal(3, db.CartList.Count);
+
+            var inventoryupdate = new Inventory()
+            {
+                Id = 1,
+                ProductId = 1,
+                Quantity = 5
+            };
+            var list2 = prgm.UpdateInventory(inventoryupdate);
+            var assumption = "NO";
             Assert.Same(assumption, db.InventoryList.Contains(inventoryupdate));
         }
     }
