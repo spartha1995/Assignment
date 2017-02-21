@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void keyPressed(View view) {
         Button button = (Button) view;
 
-        String key = button.getText().toString();
+        String switch_case = button.getText().toString();
 
         if(displayString.equals("0")){
             displayString = "";
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        switch (key){
+        switch (switch_case){
             case "1":  displayString += "1";
                 break;
             case "2":  displayString += "2";
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int solve() {
-        parseDisplayString();
+        parse();
 
         int number = 0, result = 0;
         char operator = ' ';
@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private void parseDisplayString() {
-        String numberAsString = "";
+    private void parse() {
+        String numberConverttostring= "";
         int number = 0, result = 0, i = 0;
 
         if(displayString.isEmpty())
@@ -128,17 +128,17 @@ public class MainActivity extends AppCompatActivity {
 
         while(displayString.charAt(i) != '='){
             if(displayString.charAt(i) != '+' && displayString.charAt(i) != '-')
-                numberAsString += displayString.charAt(i);
+                numberConverttostring= numberConverttostring+displayString.charAt(i);
             else{
-                number = Integer.parseInt(numberAsString);
-                numberAsString = "";
+                number = Integer.parseInt(numberConverttostring);
+                numberConverttostring = "";
                 numberStack.push(number);
                 operatorStack.push(displayString.charAt(i));
             }
             i++;
         }
 
-        number = Integer.parseInt(numberAsString);
+        number = Integer.parseInt(numberConverttostring);
         numberStack.push(number);
     }
 }
